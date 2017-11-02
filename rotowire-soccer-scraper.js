@@ -10,13 +10,14 @@ const nightmare = Nightmare({show: false})
 // username: rotowire username
 // password: rotowire password
 // league: league select value ("EPL", "FRAN", "LIGA", "SERI", "BUND", "MLS", "UCL")
-function scrapeRotowire (username, password, league) {
+// season: year of the season select value ("2015", "2016", "2017")
+function scrapeRotowire (username, password, league, season) {
   return nightmare
     .goto('https://www.rotowire.com/users/loginnow.htm')
     .type('input[name="username"]', username)
     .type('.passwordinput', password)
     .click('button[name="Submit"]')
-    .wait(2000)
+    .wait(4000)
     .goto('https://www.rotowire.com/soccer/player_stats.php')
     .click('#playingTimeStatsSelect')
     .click('#basicStatsSelect')
@@ -25,8 +26,9 @@ function scrapeRotowire (username, password, league) {
     .click('#goalieStatsSelect')
     .select('#pos', 'A')
     .select('#league', league)
+    .select('#season', season)
     .click('.btn.btn-primaryflat.btn-targets')
-    .wait(2000)
+    .wait(4000)
     // return the content of the table
     .evaluate(function () {
       const players = []
