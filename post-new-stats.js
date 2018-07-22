@@ -20,17 +20,5 @@ scraper(username, password, league, season)
   }
 
   console.log(`Scrape of ${league} successful! Sending data to server.`)
-//   console.log(data);
-//   const options = {
-//     url: 'http://localhost:8000/api/stats/new',
-//     json: data,
-//     method: 'POST'
-//   }
-//   request(options, function (error, response, body) {
-//     if (error) {
-//       console.log('error:', error)
-//     }
-//     console.log('statusCode:', response && response.statusCode) // Print the response status code if a response was received
-//     console.log('message:', body.message)
-//   })
-// })
+  console.log(data);
+})
