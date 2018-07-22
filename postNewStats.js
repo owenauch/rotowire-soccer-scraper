@@ -1,4 +1,4 @@
-const scraper = require('./rotowire-soccer-scraper')
+const scraper = require('./rotowireSoccerScraper')
 const request = require('request')
 
 // arguments (in order): username, password, league, season, week, lockedIn (true or false)

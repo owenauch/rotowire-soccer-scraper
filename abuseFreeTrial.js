@@ -1,7 +1,7 @@
 const Nightmare = require("nightmare");
 
 // create nightmare object
-const nightmare = Nightmare({ show: true });
+const nightmare = Nightmare({ show: false });
 
 // generate a random string of character length n
 function randomString(n) {
@@ -22,8 +22,8 @@ function abuseFreeTrial() {
   console.log("Creating free trial account now...");
   const username = randomString(10);
   const password = randomString(10);
-
-  nightmare
+  return new Promise((resolve, reject)  => {
+    nightmare
     .goto("https://www.rotowire.com/users/free_trial.htm")
     .wait("#ftlp-form")
     .type("#ftlp-form :nth-child(1) > div.span8 > input", randomString(10))
@@ -36,12 +36,15 @@ function abuseFreeTrial() {
     .click("input.btn-primary")
     .wait("p.loggedin")
     .end()
-    .catch(error => console.log(error))
-
-  return {
-    username: username,
-    password: password
-  }
+    .then(resolve({
+      username: username,
+      password: password
+    }))
+    .catch(error => {
+      console.log(error);
+      reject(error);
+    })
+  });
 }
 
 module.exports = abuseFreeTrial;
