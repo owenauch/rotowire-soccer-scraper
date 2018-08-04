@@ -4,8 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "electron": "^2.0.5",
+    "csv": "^3.1.0",
+    "electron": "^2.0.6",
     "nightmare": "^2.10.0",
+    "nightmare-download-manager": "^0.2.5",
     "request": "^2.83.0"
   }
 }

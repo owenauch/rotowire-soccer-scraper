@@ -25,18 +25,17 @@ function abuseFreeTrial() {
   return new Promise((resolve, reject)  => {
     nightmare
     .goto("https://www.rotowire.com/users/free_trial.htm")
-    .wait("#ftlp-form")
-    .type("#ftlp-form :nth-child(1) > div.span8 > input", randomString(10))
-    .type("#ftlp-form :nth-child(2) > div.span8 > input", randomString(10))
-    .type("#ftlp-form :nth-child(3) > div.span8 > input", randomString(7) + "@" + randomString(5) + ".com")
-    .type("#ftlp-form :nth-child(4) > div.span8 > input", randomPhoneNumber(10))
-    .type("#ftlp-form :nth-child(5) > div.span8 > input", username)
-    .type("#ftlp-form :nth-child(6) > div.span8 > input", password)
-    .type("#ftlp-form :nth-child(7) > div.span8 > input", password)
-    .click("input.btn-primary")
-    .wait("p.loggedin")
+    .wait("main.page")
+    .type("main.page > form :nth-child(2)", randomString(10))
+    .type("main.page > form :nth-child(4)", randomString(10))
+    .type("main.page > form :nth-child(6)", randomString(7) + "@" + randomString(5) + ".com")
+    .type("main.page > form :nth-child(8)", username)
+    .type("main.page > form :nth-child(10)", password)
+    .type("main.page > form :nth-child(12)", password)
+    .click("button.primary")
+    .wait("a.account-top__logout")
     .end()
-    .then(resolve({
+    .then(link => resolve({
       username: username,
       password: password
     }))
