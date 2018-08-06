@@ -11,7 +11,9 @@ function postNewStats(username, password, league, season, week) {
       const data = fs.readFileSync(`csvs/${result}.csv`);
       csv.parse(data, { delimiter: "\t" }, (err, players) => {
         players.slice(1).forEach(player => {
-          setTimeout(function() {sendPlayerToAPI(player, week, season)}, 100);
+          setTimeout(function() {
+            sendPlayerToAPI(player, week, season);
+          }, 100);
         });
         resolve("done");
       });
@@ -57,6 +59,8 @@ function sendPlayerToAPI(player, week, season) {
       },
       (error, response, body) => {
         if (error) {
+          console.log(player);
+          console.log(playerJSON);
           console.log(error);
         }
       }

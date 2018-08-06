@@ -7,7 +7,6 @@ abuseFreeTrial()
   .then(account => {
     const username = account.username;
     const password = account.password;
-    console.log(username, password);
     const season = process.argv[2];
     const week = process.argv[3];
     const league = process.argv[4];
